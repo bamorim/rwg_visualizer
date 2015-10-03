@@ -27,6 +27,12 @@ gulp.task('webpack-server', function(callback){
 gulp.task('prepare-dev-server',function(){
   gulp.src("src/index.html")
     .pipe(gulp.dest("build/"));
+
+  gulp.src("public/data/*")
+    .pipe(gulp.dest("build/data/"));
+
+  gulp.src("public/metadata.json")
+    .pipe(gulp.dest("build/"));
 });
 
 gulp.task('server', ['webpack-server', 'prepare-dev-server']);
