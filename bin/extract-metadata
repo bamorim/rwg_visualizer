@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+require("babel/register");
+require("../metadata_extractor/program.js")();
