@@ -34,14 +34,14 @@ let somes = compose(
 // Returns a JSON given a directory with experiments
 // ( String -> Maybe[Object] ) -> String -> List[Object]
 async function extractMetadata (parse, directory){
-  let files = await readdir(directory);
-  let metadata = somes(
+  let fileList = await readdir(directory);
+  let files = somes(
     map(
       parse,
-      files)
+      fileList)
   );
 
-  return metadata;
+  return { directory, files };
 }
 
 export default curry(extractMetadata)(parser);
