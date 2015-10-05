@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "quote-props": [2, "as-needed"],
+    "dot-location": [2, "property"],
+    "no-else-return": 2,
+    "no-floating-decimal": 2,
+    "no-param-reassign": 1,
+    "no-self-compare": 2,
+    "no-void": 2,
+    "no-warning-comments": [1, {
+      "terms": ["todo", "fixme"],
+      "location": "start"
+    }],
+    "wrap-iife": [2, "inside"],
+
+    "brace-style": [1, "1tbs"],
+    "comma-style": [1, "last"],
+    "indent": [1, 2],
+    "linebreak-style": [1, "unix"],
+    "max-nested-callbacks": [1, 3],
+    "newline-after-var": [1, "always"],
+    "no-lonely-if": 1,
+    "no-multiple-empty-lines": [1, {max: 2}],
+    "no-nested-ternary": 1,
+    "no-unneeded-ternary": 1,
+    "operator-linebreak": [1, "after"],
+    "padded-blocks": [1, "never"],
+
+    "no-var": 2,
+    "object-shorthand": [1, "always"],
+
+    "react/jsx-uses-react": 1
+  },
+  "env": {
+    "node":  true
+  }
+}

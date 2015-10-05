@@ -2,10 +2,11 @@ import React from "react";
 import CSVChart from "./CSVChart";
 import {ScatterChart, Log10Grid} from "./charts";
 let Chart = Log10Grid(ScatterChart);
-
 let fields = ["steps", "order", "initialOrder", "seed", "type"];
+
 async function getMetadata(){
   let response = await fetch("metadata.json");
+
   return response.json();
 }
 
@@ -22,15 +23,15 @@ let checkInvariants = checkProps( (inv, val) => inv == val );
 let checkSelections = checkProps(
   ({type, value}, fieldVal) => {
     switch(type){
-      case "some":
-        return contains(fieldVal, value)
-        break;
-      case "one":
-        return fieldVal == value;
-        break;
-      default:
-        return true;
-        break;
+    case "some":
+      return contains(fieldVal, value)
+      break;
+    case "one":
+      return fieldVal == value;
+      break;
+    default:
+      return true;
+      break;
     }
   }
 );
@@ -38,6 +39,7 @@ let checkSelections = checkProps(
 function selectFiles({ invariants, selections }, files){
   let filterInvariants = filter(checkInvariants(invariants));
   let filterSelections = filter(checkSelections(selections));
+
   return filterInvariants(filterSelections(files));
 };
 
@@ -94,8 +96,10 @@ class App extends React.Component {
       data={data}/>;
 
     let chart = <CSVChart/>
+    
     //let { files } = metadata;
     let files = selectFiles(this.state.plot, metadata.files);
+
     return <div>
       <h1>Hello World!</h1>
       { files.map( f => 
