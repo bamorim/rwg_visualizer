@@ -1,4 +1,6 @@
 import React from "react";
+import {ScatterChart, Log10Grid} from "./charts";
+let Chart = Log10Grid(ScatterChart);
 
 let fields = ["steps", "order", "initialOrder", "seed", "type"];
 async function getMetadata(){
@@ -73,9 +75,6 @@ class App extends React.Component {
         }
       }
     }
-    var ci = window.ci = checkInvariants(this.state.plot.invariants);
-    console.log("SANITY CHECKINGS");
-    console.log(ci({foo: "bar"}));
   }
 
   componentDidMount(){
@@ -85,7 +84,9 @@ class App extends React.Component {
   }
 
   render(){
+    let data =[1,2,3,4,5].map((i) => ({x: Math.pow(10,i), y: Math.pow(10,i)}))
     let { metadata } = this.state;
+
     //let { files } = metadata;
     let files = selectFiles(this.state.plot, metadata.files);
     return <div>
@@ -93,6 +94,10 @@ class App extends React.Component {
       { files.map( f => 
         <h2>{f.filename}</h2>
       )}
+      <Chart
+        xScale={d3.scale.log().domain([0.9,1000000])} 
+        yScale={d3.scale.log().domain([0.9,1000000])} 
+        data={data}/> 
     </div>;
   }
 }

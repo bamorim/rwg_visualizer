@@ -8,5 +8,30 @@
   <body>
     <script src="http://localhost:8080/webpack-dev-server.js"></script>
     <script src="bundle.js"></script>
+    <style>
+text {
+  font: 10px sans-serif;
+}
+
+.horizontalGrid, .verticalGrid{
+  opacity: 0.2;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.legend line,
+.lines {
+  fill: none;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+    </style>
   </body>
 </html>
