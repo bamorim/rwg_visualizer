@@ -111,7 +111,7 @@ class Chart extends React.Component {
     let { yGridTicks, xGridTicks } = this._gridTicks();
     let { xScale, yScale } = this._scales();
 
-    this.svg.selectAll("line.horizontalGrid").data(xGridTicks).enter()
+    this.svg.selectAll("line.horizontalGrid").data(yGridTicks).enter()
     .append("line")
     .attr(
       {
@@ -125,7 +125,7 @@ class Chart extends React.Component {
         "stroke" : "black",
         "stroke-width" : "1px"
       });
-    this.svg.selectAll("line.verticalGrid").data(yGridTicks).enter()
+    this.svg.selectAll("line.verticalGrid").data(xGridTicks).enter()
     .append("line")
     .attr(
       {
