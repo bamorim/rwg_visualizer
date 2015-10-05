@@ -1,4 +1,5 @@
 import React from "react";
+import CSVChart from "./CSVChart";
 import {ScatterChart, Log10Grid} from "./charts";
 let Chart = Log10Grid(ScatterChart);
 
@@ -87,6 +88,12 @@ class App extends React.Component {
     let data =[1,2,3,4,5].map((i) => ({x: Math.pow(10,i), y: Math.pow(10,i)}))
     let { metadata } = this.state;
 
+    let chart1 = <Chart
+      xScale={d3.scale.log().domain([0.9,1000000])} 
+      yScale={d3.scale.log().domain([0.9,1000000])} 
+      data={data}/>;
+
+    let chart = <CSVChart/>
     //let { files } = metadata;
     let files = selectFiles(this.state.plot, metadata.files);
     return <div>
@@ -94,10 +101,7 @@ class App extends React.Component {
       { files.map( f => 
         <h2>{f.filename}</h2>
       )}
-      <Chart
-        xScale={d3.scale.log().domain([0.9,1000000])} 
-        yScale={d3.scale.log().domain([0.9,1000000])} 
-        data={data}/> 
+      {chart}
     </div>;
   }
 }
